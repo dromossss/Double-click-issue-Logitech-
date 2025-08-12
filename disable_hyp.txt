@@ -1,0 +1,18 @@
+~LButton::
+    if (A_PriorHotkey = "LButton" && A_TimeSincePriorHotkey < 100) ; Prevents hyperclicks
+    {
+        return
+    }
+    else
+    {
+        ; Prevents disabling click-and-drag functionality
+        if (GetKeyState("LButton", "P"))
+        {
+            Click Down
+            KeyWait, LButton
+            Click Up
+            return
+        }
+        Send {LButton}
+    }
+return
